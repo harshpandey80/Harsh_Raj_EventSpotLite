@@ -1,0 +1,46 @@
+/* Home.css */
+.search-input {
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.event-card {
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.parallax {
+    background: linear-gradient(to bottom right, #fffacd, #ffb6c1, #9370db, #add8e6);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+button {
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3b82f6;
+}

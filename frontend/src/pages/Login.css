@@ -1,0 +1,112 @@
+/* Login.css */
+body {
+    background: linear-gradient(135deg, #f0f4f8, #a7c6ed); /* Initial gradient colors */
+    background-size: 400% 400%; /* To allow for animation */
+    animation: gradientAnimation 15s ease infinite; /* Animation */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.login-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.login-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    animation: bounce 0.5s; /* Add bounce effect on focus */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px); /* Bounce up */
+    }
+    60% {
+        transform: translateY(-2px); /* Bounce down */
+    }
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-button:hover {
+    background-color: #357ab8;
+    transform: translateY(-2px); /* Slight lift effect */
+    animation: bounce 0.5s; /* Add bounce effect on hover */
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-link {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
