@@ -96,16 +96,16 @@ function Home() {
                 {filteredEvents.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {filteredEvents.map((event, index) => (
-                            <div
-                                key={event._id}
-                                className="event-card bg-white rounded-lg shadow-lg p-4 transition-transform duration-500 ease-out transform hover:scale-105 cursor-pointer"
-                                style={{ animationDelay: `${index * 0.1}s` }} // Stagger animation
-                                onClick={() => openDetailsModal(event)}
-                            >
-                                <h2 className="text-xl font-semibold mb-1">{event.name}</h2>
-                                <p className="text-gray-600 mb-1">{new Date(event.date).toLocaleDateString()}</p>
-                                <p className="text-gray-600">{event.location}</p>
-                            </div>
+                           <div
+                               key={event._id}
+                               className="event-card bg-white rounded-lg shadow-lg p-4 cursor-pointer transition-transform transition-opacity duration-300 ease-out transform hover:scale-105 hover:opacity-90"
+                               style={{ animationDelay: `${index * 0.1}s` }}
+                               onClick={() => openDetailsModal(event)}
+                           >
+                               <h2 className="text-xl font-semibold mb-1">{event.name}</h2>
+                               <p className="text-gray-600 mb-1">{new Date(event.date).toLocaleDateString()}</p>
+                               <p className="text-gray-600">{event.location}</p>
+                           </div>
                         ))}
                     </div>
                 ) : (
