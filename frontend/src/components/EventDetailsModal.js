@@ -29,7 +29,7 @@ const EventDetailsModal = ({ isOpen, onClose, event }) => {
                 <h2 className="text-xl font-semibold mb-3 text-gray-800">{event.name}</h2>
                 <p className="text-gray-600">{new Date(event.date).toLocaleDateString()}</p>
                 <p className="text-gray-600 mb-3">{event.location}</p>
-                <img width={100} height={100} src={event.imageUrl} alt="Event" />
+                <img width={200} height={90} src={event.imageUrl} alt="Event" />
 
                 {/* Countdown Component */}
                 <Countdown eventDate={event.date} />
