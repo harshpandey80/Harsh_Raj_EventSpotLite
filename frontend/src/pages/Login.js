@@ -8,16 +8,17 @@ import "./Login.css";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  // using useState for form handling because when we submit our browser don't neet to collect data from any variable or from here and there all the data is updated correctly
+  const { login } = useAuth(); //from context api to call for login and process request
+  const navigate = useNavigate(); // for nevigation
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await loginUser(formData);
-      login(data.token);
+      const { data } = await loginUser(formData);  // sending request to backend to validate data;
+      login(data.token); // exatracting jwt token from reqponse got from backend 
       toast.success("Login Success");
-      navigate("/");
+      navigate("/"); // if login success we nevigate to home 
     } catch (error) {
       toast.error("Login failed, please try again!");
       console.log(error);

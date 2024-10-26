@@ -13,6 +13,7 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
     imageUrl: "",
   });
   const [loading, setLoading] = useState(false);
+  const [isTilted, setIsTilted] = useState(false); // New state for tilt animation
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,6 +41,14 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
       setLoading(false);
     }
   };
+  
+  const handleCancelClick = () => {
+    setIsTilted(true); // Trigger tilt animation
+    setTimeout(() => {
+      setIsTilted(false); // Reset tilt state after animation
+      onClose(); // Close the modal after tilt
+    }, 1000); // Duration of the tilt animation
+  };
 
   if (!isOpen) return null;
 
@@ -49,7 +58,7 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
       onClick={onClose}
     >
       <div
-        className={`modal-content ${isOpen ? "scale-in" : "scale-out"}`}
+        className={`modal-content ${isOpen ? "scale-in" : "scale-out"} ${isTilted ? 'tilt' : ''}`} // Add tilt class
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-lg font-semibold mb-3">Create Event</h2>
@@ -157,7 +166,7 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
           </button>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleCancelClick} // Use the new handler
             className="mt-2 ml-2 bg-gray-300 text-gray-800 py-1 px-3 rounded-md hover:bg-gray-400 transition"
           >
             Cancel

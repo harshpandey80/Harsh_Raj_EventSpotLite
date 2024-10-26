@@ -10,16 +10,17 @@ function Register() {
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
+  // using useState for form handling because when we submit our browser don't neet to collect data from any variable or from here and there all the data is updated correctly
+  const navigate = useNavigate(); // for navigation after success signup
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await registerUser(formData);
+      await registerUser(formData); // sending request to backend from where our req get proccessed and user registed to this platform 
       toast.success("Registered successfully!");
-      navigate("/login");
+      navigate("/login"); // after successfull request we navigate to login for user convenience
     } catch (error) {
-      toast.error("Registration failed. Please try again.");
+      toast.error("Registration failed. Please try again."); // showig error in toast is caought;
     }
   };
 
@@ -36,7 +37,7 @@ function Register() {
             placeholder="Username"
             className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
             onChange={(e) =>
-              setFormData({ ...formData, username: e.target.value })
+              setFormData({ ...formData, username: e.target.value })// updating data on every new change like on submittion hame data na collect krna pade
             }
             required
           />
@@ -48,6 +49,7 @@ function Register() {
             className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
+              // same as above
             }
             required
           />

@@ -41,6 +41,56 @@
 }
 
 
+@keyframes closingAnimation {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    10% {
+        opacity: 0.90;
+        transform: scale(0.90);
+    }
+    20% {
+        opacity: 0.80;
+        transform: scale(0.80);
+    }
+    30% {
+        opacity: 0.70;
+        transform: scale(0.70);
+    }
+    40% {
+        opacity: 0.60;
+        transform: scale(0.60);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.50);
+    }
+    60% {
+        opacity: 0.40;
+        transform: scale(0.40);
+    }
+    70% {
+        opacity: 0.30;
+        transform: scale(0.30);
+    }
+    80% {
+        opacity: 0.20;
+        transform: scale(0.20);
+    }
+    90% {
+        opacity: 0.10;
+        transform: scale(0.10);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+.tilt {
+    animation: closingAnimation 1s ease-in;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

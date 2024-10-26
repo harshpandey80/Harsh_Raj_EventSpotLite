@@ -7,22 +7,23 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
   const { isAuth, logout } = useAuth();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+// function for logut which is called when user click on logout buttton
   const handleLogout = () => {
     logout();
     navigate("/");
-    setIsOpen(false);
+    setIsOpen(false);// to close navbar or toogle 
   };
 
   const toggleMenu = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev) => !prev); // vice-verca if true false if false true
   };
 
   const handleLinkClick = () => {
-    setIsOpen(false);
+    setIsOpen(false); 
   };
 
   return (
+    //   mostly we are doing conditional rendering for differtent media devices and show toggle and close button according to screen size
     <nav
       className={`bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 backdrop-blur-md p-4 shadow-lg flex justify-between items-center rounded-b-lg transition-all duration-300`}
     >
@@ -114,7 +115,8 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
         >
           Home
         </Link>
-        {!isAuth ? (
+        {!isAuth ? ( 
+          // conditional rendering because if user is autenticated the isAuth (from authcontext) is true and we display logout button if false then it means user is not authenticated then we show login and signup buttons
           <>
             <Link
               to="/login"

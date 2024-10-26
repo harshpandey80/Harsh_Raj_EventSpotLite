@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
+      <Routes> {/*  Creating links using routes for nevigation in single page application */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -25,7 +25,7 @@ function App() {
         pauseOnHover
         draggable
         theme="light"
-      />
+      />{/* use Toastify for showing error or success message on ui which we are getting from backend or ui for better ui enhancement*/}
     </div>
   );
 }

@@ -13,7 +13,7 @@ const EventDetailsModal = ({ isOpen, onClose, event }) => {
 
     const handleClose = () => {
         setAnimationState('flip-out');
-        setTimeout(() => onClose(), 300);
+        setTimeout(() => onClose(), 800);
     };
 
     if (!isOpen || !event) return null;
