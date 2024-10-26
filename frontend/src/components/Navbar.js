@@ -27,7 +27,9 @@ function Navbar({ toggleDarkMode, isDarkMode }) {
     <nav
       className={`bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 backdrop-blur-md p-4 shadow-lg flex justify-between items-center rounded-b-lg transition-all duration-300`}
     >
+      
       <h2 className="text-2xl font-bold text-white">EventSpot Lite</h2>
+     
 
       <button
         onClick={toggleDarkMode}

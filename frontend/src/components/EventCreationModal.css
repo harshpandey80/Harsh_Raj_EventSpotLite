@@ -88,7 +88,7 @@
     }
 }
 .tilt {
-    animation: closingAnimation 1s ease-in;
+    animation: closingAnimation 1s ease-out;
 }
 
 @keyframes fadeIn {
