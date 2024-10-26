@@ -1,3 +1,4 @@
+
 .search-input {
     padding: 12px;
     margin-bottom: 16px;
@@ -11,22 +12,23 @@
     /* opacity: 0;  */
     animation: slideIn 0.7s;
     animation-timing-function: ease-out;
-    transition: transform 0.5s ease, opacity 0.17s ease; /* Transition for hover effect */
+    transition: transform 0.5s ease, opacity 0.17s ease;
 }
 
 .event-card:hover {
-    transform: scale(1.05); /* Scale on hover */
-    opacity: 0.9; /* Slightly fade on hover */
+    transform: scale(1.05); 
+    opacity: 0.9; 
 }
+
 
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
-        opacity: 0; /* Start fully transparent */
+        opacity: 0; 
     }
     to {
         transform: translateX(0);
-        opacity: 1; /* Fully visible */
+        opacity: 1; 
     }
 }
 
@@ -35,9 +37,26 @@
     flex-wrap: wrap;
     gap: 16px;
 }
-
+body {
+    /* background: linear-gradient(135deg, #f0f4f8, #a7c6ed); */
+    background-size: 200% 200%;
+    animation: gradientAnimation 20s ease infinite; 
+    background-image: url(../assets/backGroundImage.jpg);
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 .parallax {
-    background: linear-gradient(to bottom right, #fffacd, #ffb6c1, #9370db, #add8e6);
+    /* background-image: url(../assets/backGroundImage.jpg); */
+    background: transparent;
     padding: 20px;
     border-radius: 8px;
 }
@@ -47,5 +66,5 @@ button {
 }
 
 button:hover {
-    background-color: #3b82f6; /* Change this color to match your design */
+    background-color: #3b82f6; 
 }

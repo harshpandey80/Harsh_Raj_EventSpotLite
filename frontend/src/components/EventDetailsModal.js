@@ -1,48 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import Countdown from './Countdown'; // Import Countdown
-import Rating from './Rating'; // Import Rating
+import Countdown from './Countdown';
+import Rating from './Rating';
 import './EventDetailsModal.css';
+import CloseButton from '../assets/CloseButton.png';
 
 const EventDetailsModal = ({ isOpen, onClose, event }) => {
-    const [animationState, setAnimationState] = useState('fade-in scale-in');
+    const [animationState, setAnimationState] = useState('flip-in');
 
     useEffect(() => {
-        if (isOpen) {
-            setAnimationState('fade-in scale-in');
-        } else {
-            setAnimationState('fade-out scale-out');
-        }
+        setAnimationState(isOpen ? 'flip-in' : 'flip-out');
     }, [isOpen]);
 
     const handleClose = () => {
-        setAnimationState('fade-out scale-out');
-        setTimeout(() => {
-            onClose();
-        }, 300); // Match this duration with the CSS animation duration
+        setAnimationState('flip-out');
+        setTimeout(() => onClose(), 300);
     };
 
     if (!isOpen || !event) return null;
 
     return (
-        <div className={`modal-overlay ${isOpen ? 'fade-in' : 'fade-out'}`}>
+        <div className={`modal-overlay fade-in`}>
             <div className={`modal-content ${animationState}`}>
-                <h2 className="text-xl font-semibold mb-3 text-gray-800">{event.name}</h2>
-                <p className="text-gray-600">{new Date(event.date).toLocaleDateString()}</p>
-                <p className="text-gray-600 mb-3">{event.location}</p>
-                <img width={200} height={90} src={event.imageUrl} alt="Event" />
-
-                {/* Countdown Component */}
-                <Countdown eventDate={event.date} />
-
-                {/* Rating Component */}
-                <Rating eventId={event._id} onRate={(id, value) => console.log(`Event ${id} rated with ${value}`)} />
-
-                <button
-                    onClick={handleClose}
-                    className="mt-2 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
-                >
-                    Close
+                <button onClick={handleClose} className="close-button" aria-label="Close">
+                    <img src={CloseButton} height={50} width={50} alt="Close" />
                 </button>
+                <img src={event.imageUrl} alt="Event" className="event-image" />
+                <div className="event-details">
+                    <h2 className="event-title">{event.name}</h2>
+                    <p className="event-date">{new Date(event.date).toLocaleDateString()}</p>
+                    <p className="event-location">{event.location}</p>
+
+                   
+                    <div className="event-description">
+                        {event.description}
+                    </div>
+                    
+                    <Countdown eventDate={event.date} />
+                    <Rating eventId={event._id} onRate={(id, value) => console.log(`Event ${id} rated with ${value}`)} />
+                </div>
             </div>
         </div>
     );

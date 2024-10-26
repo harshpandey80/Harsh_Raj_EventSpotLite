@@ -1,21 +1,7 @@
 /* Login.css */
-body {
-    background: linear-gradient(135deg, #f0f4f8, #a7c6ed); /* Initial gradient colors */
-    background-size: 400% 400%; /* To allow for animation */
-    animation: gradientAnimation 15s ease infinite; /* Animation */
-}
 
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+
+
 
 .login-container {
     display: flex;
@@ -64,7 +50,7 @@ body {
 .input-field:focus {
     border-color: #4a90e2;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-    animation: bounce 0.5s; /* Add bounce effect on focus */
+    animation: bounce 0.5s; 
 }
 
 @keyframes bounce {
@@ -72,10 +58,10 @@ body {
         transform: translateY(0);
     }
     40% {
-        transform: translateY(-5px); /* Bounce up */
+        transform: translateY(-5px); 
     }
     60% {
-        transform: translateY(-2px); /* Bounce down */
+        transform: translateY(-2px);
     }
 }
 
@@ -93,8 +79,8 @@ body {
 
 .login-button:hover {
     background-color: #357ab8;
-    transform: translateY(-2px); /* Slight lift effect */
-    animation: bounce 0.5s; /* Add bounce effect on hover */
+    transform: translateY(-2px);
+    animation: bounce 0.5s; 
 }
 
 .login-footer {

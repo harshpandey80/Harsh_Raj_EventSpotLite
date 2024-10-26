@@ -1,3 +1,4 @@
+
 // src/pages/Home.js
 import React, { useEffect, useState } from 'react';
 import { fetchEvents } from '../services/api';
@@ -13,7 +14,7 @@ function Home() {
     const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
     const [isCreationModalOpen, setIsCreationModalOpen] = useState(false);
     const [query, setQuery] = useState(''); // Search query
-    const [filteredEvents, setFilteredEvents] = useState([]); // Filtered events
+    const [filteredEvents, setFilteredEvents] = useState([]); 
 
     useEffect(() => {
         const getEvents = async () => {
@@ -32,7 +33,7 @@ function Home() {
         getEvents();
     }, []);
 
-    // Update filtered events based on search query
+   
     useEffect(() => {
         setFilteredEvents(
             events.filter(event =>
@@ -63,6 +64,7 @@ function Home() {
     const handleEventCreated = async () => {
         const { data } = await fetchEvents();
         setEvents(data);
+        
     };
 
     if (loading) {
@@ -73,9 +75,9 @@ function Home() {
     const isModalOpen = isDetailsModalOpen || isCreationModalOpen;
 
     return (
-        <div className={`max-w-4xl mx-auto p-4 ${isModalOpen ? 'modal-open' : ''}`}>
+        <div className={`max-w-4xl  mx-auto p-4 ${isModalOpen ? 'modal-open' : ''}`}>
             <div className="parallax">
-                <h1 className="text-2xl font-bold mb-6 text-center">Upcoming Events</h1>
+                <h1 className="text-5xl font-bold mb-6 text-center">Events</h1>
                 
                 {/* Search Input Field */}
                 <input

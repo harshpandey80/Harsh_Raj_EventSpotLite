@@ -40,7 +40,7 @@
     animation: scaleOut 0.3s forwards;
 }
 
-/* Keyframes for fade and scale animations */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
