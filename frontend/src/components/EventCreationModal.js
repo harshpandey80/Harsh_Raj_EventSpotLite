@@ -1,4 +1,3 @@
-// src/components/EventCreationModal.js
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { createEvent } from "../services/api";
@@ -13,7 +12,7 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
     imageUrl: "",
   });
   const [loading, setLoading] = useState(false);
-  const [isTilted, setIsTilted] = useState(false); // New state for tilt animation
+  const [isTilted, setIsTilted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,27 +26,21 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
       await createEvent(formData);
       toast.success("Event created successfully!");
       onEventCreated();
-      setFormData({  
-        name: "",
-        date: "",
-        location: "",
-        description: "",
-        imageUrl: "",
-      });
-      onClose(); // Close the modal
+      setFormData({ name: "", date: "", location: "", description: "", imageUrl: "" });
+      onClose();
     } catch (error) {
       toast.error("Login to create event");
     } finally {
       setLoading(false);
     }
   };
-  
+
   const handleCancelClick = () => {
-    setIsTilted(true); // Trigger tilt animation
+    setIsTilted(true);
     setTimeout(() => {
-      setIsTilted(false); // Reset tilt state after animation
-      onClose(); // Close the modal after tilt
-    }, 1000); // Duration of the tilt animation
+      setIsTilted(false);
+      onClose();
+    }, 1000);
   };
 
   if (!isOpen) return null;
@@ -58,77 +51,67 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
       onClick={onClose}
     >
       <div
-        className={`modal-content ${isOpen ? "scale-in" : "scale-out"} ${isTilted ? 'tilt' : ''}`} // Add tilt class
+        className={`modal-content ${isOpen ? "scale-in" : "scale-out"} ${isTilted ? 'tilt' : ''}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-lg font-semibold mb-3">Create Event</h2>
+        <h2 className="text-lg font-semibold mb-3 text-glow">Create Event</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label className="block mb-1" htmlFor="name">
-              Event Name
-            </label>
+            <label className="block mb-1" htmlFor="name">Event Name</label>
             <input
               type="text"
               name="name"
               id="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border rounded-md p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              className="w-full border rounded-md p-1 text-sm focus:outline-none transition duration-200"
               required
             />
           </div>
           <div className="mb-3">
-            <label className="block mb-1" htmlFor="date">
-              Date
-            </label>
+            <label className="block mb-1" htmlFor="date">Date</label>
             <input
               type="date"
               name="date"
               id="date"
               value={formData.date}
               onChange={handleChange}
-              className="w-full border rounded-md p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              className="w-full border rounded-md p-1 text-sm focus:outline-none transition duration-200"
               required
             />
           </div>
           <div className="mb-3">
-            <label className="block mb-1" htmlFor="location">
-              Location
-            </label>
+            <label className="block mb-1" htmlFor="location">Location</label>
             <input
               type="text"
               name="location"
               id="location"
               value={formData.location}
               onChange={handleChange}
-              className="w-full border rounded-md p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              className="w-full border rounded-md p-1 text-sm focus:outline-none transition duration-200"
               required
             />
           </div>
           <div className="mb-3">
-            <label className="block mb-1" htmlFor="description">
-              Description
-            </label>
+            <label className="block mb-1" htmlFor="description">Description</label>
             <textarea
               name="description"
               id="description"
               value={formData.description}
               onChange={handleChange}
-              className="w-full border rounded-md p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              className="w-full border rounded-md p-1 text-sm focus:outline-none transition duration-200"
               rows="2"
             />
           </div>
           <div className="mb-3">
-            <label className="block mb-1" htmlFor="imageUrl">
-              Image URL
-            </label>
+            <label className="block mb-1" htmlFor="imageUrl">Image URL</label>
             <input
               type="text"
               name="imageUrl"
               id="imageUrl"
               value={formData.imageUrl}
               onChange={handleChange}
-              className="w-full border rounded-md p-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+              className="w-full border rounded-md p-1 text-sm focus:outline-none transition duration-200"
             />
           </div>
           <button
@@ -166,7 +149,7 @@ const EventCreationModal = ({ isOpen, onClose, onEventCreated }) => {
           </button>
           <button
             type="button"
-            onClick={handleCancelClick} // Use the new handler
+            onClick={handleCancelClick}
             className="mt-2 ml-2 bg-gray-300 text-gray-800 py-1 px-3 rounded-md hover:bg-gray-400 transition"
           >
             Cancel

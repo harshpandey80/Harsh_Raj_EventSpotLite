@@ -1,4 +1,3 @@
-// src/pages/Register.js
 import React, { useState } from "react";
 import { register as registerUser } from "../services/api";
 import { toast } from "react-toastify";
@@ -10,64 +9,55 @@ function Register() {
     email: "",
     password: "",
   });
-  // using useState for form handling because when we submit our browser don't neet to collect data from any variable or from here and there all the data is updated correctly
-  const navigate = useNavigate(); // for navigation after success signup
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await registerUser(formData); // sending request to backend from where our req get proccessed and user registed to this platform 
+      await registerUser(formData);
       toast.success("Registered successfully!");
-      navigate("/login"); // after successfull request we navigate to login for user convenience
+      navigate("/login");
     } catch (error) {
-      toast.error("Registration failed. Please try again."); // showig error in toast is caought;
+      toast.error("Registration failed. Please try again.");
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-black via-gray-900 to-black">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-80 transition-transform transform duration-300 hover:scale-105"
+        className="bg-gray-800 bg-opacity-90 backdrop-blur-lg p-8 rounded-lg shadow-2xl w-80
+                   transition-transform duration-300 hover:scale-105 border border-indigo-500/20"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Username"
-            className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            onChange={(e) =>
-              setFormData({ ...formData, username: e.target.value })// updating data on every new change like on submittion hame data na collect krna pade
-            }
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="email"
-            placeholder="Email"
-            className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-              // same as above
-            }
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            placeholder="Password"
-            className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            required
-          />
-        </div>
+        <h2 className="text-3xl font-bold text-center text-cyan-400 mb-6 animate-pulse">Register</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          className="mb-4 w-full px-4 py-2 text-cyan-300 bg-gray-900 bg-opacity-80 border border-cyan-500 
+                     rounded-lg outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300 placeholder-gray-500"
+          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          className="mb-4 w-full px-4 py-2 text-cyan-300 bg-gray-900 bg-opacity-80 border border-cyan-500 
+                     rounded-lg outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300 placeholder-gray-500"
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="mb-4 w-full px-4 py-2 text-cyan-300 bg-gray-900 bg-opacity-80 border border-cyan-500 
+                     rounded-lg outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300 placeholder-gray-500"
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          required
+        />
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded-lg p-2 w-full hover:bg-blue-600 transition duration-200"
+          className="w-full py-2 text-lg font-semibold text-black bg-gradient-to-r from-cyan-400 via-pink-500 to-indigo-500
+                     rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:from-pink-500 hover:to-cyan-400"
         >
           Register
         </button>

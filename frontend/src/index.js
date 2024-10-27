@@ -7,12 +7,11 @@ import { AuthProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AuthProvider>  {/*Wrapped the whole code to use contexApi to prevent from propdrilling lake ham parent se child ko data send krr rhe hai*/}
+  <AuthProvider>  
     <BrowserRouter >
       <App />
     </BrowserRouter>
   </AuthProvider>
 );
 
-// Optionally enable performance monitoring
-// reportWebVitals(console.log);
+

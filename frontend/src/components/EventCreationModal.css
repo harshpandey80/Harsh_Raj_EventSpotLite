@@ -1,112 +1,124 @@
-/* EventCreationModal.css */
+/* Base Styles */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 50;
+    background-color: rgba(10, 10, 20, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    animation: fadeInBackdrop 0.6s ease-out forwards;
 }
 
 .modal-content {
-    background: white;
-    border-radius: 8px;
+    background: rgba(25, 25, 35, 0.95);
+    border: 3px solid #ff00e5;
+    border-radius: 12px;
     padding: 20px;
-    max-width: 400px;
+    max-width: 600px;
     width: 90%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 100;
+    color: #e4e4e7;
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.7), 0 0 30px rgba(0, 224, 255, 0.5);
+    transform-origin: center;
+    animation: modalAppear 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
-/* Fade In/Out for Overlay */
-.fade-in {
-    animation: fadeIn 0.3s forwards;
+.event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-.fade-out {
-    animation: fadeOut 0.3s forwards;
+.event-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), 0 0 25px rgba(58, 134, 255, 0.4);
 }
 
-/* Scale In/Out for Modal Content */
-.scale-in {
-    animation: scaleIn 0.3s forwards;
+.event-description {
+    text-align: center;
+    line-height: 1.6;
 }
 
-.scale-out {
-    animation: scaleOut 0.3s forwards;
+@keyframes modalAppear {
+    0% { opacity: 0; transform: translateY(-50%) scale(0.8) rotateX(-25deg); }
+    100% { opacity: 1; transform: translateY(0) scale(1) rotateX(0); }
 }
 
-
-@keyframes closingAnimation {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    10% {
-        opacity: 0.90;
-        transform: scale(0.90);
-    }
-    20% {
-        opacity: 0.80;
-        transform: scale(0.80);
-    }
-    30% {
-        opacity: 0.70;
-        transform: scale(0.70);
-    }
-    40% {
-        opacity: 0.60;
-        transform: scale(0.60);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(0.50);
-    }
-    60% {
-        opacity: 0.40;
-        transform: scale(0.40);
-    }
-    70% {
-        opacity: 0.30;
-        transform: scale(0.30);
-    }
-    80% {
-        opacity: 0.20;
-        transform: scale(0.20);
-    }
-    90% {
-        opacity: 0.10;
-        transform: scale(0.10);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
-.tilt {
-    animation: closingAnimation 1s ease-out;
-}
-
-@keyframes fadeIn {
+@keyframes fadeInBackdrop {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+/* Hover Effects */
+.event-card:hover {
+    transform: scale(1.1) rotateY(2deg) rotateX(2deg);
+    opacity: 0.95;
+    background-color: #3b82f6;
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.6), 0px 0px 25px rgba(0, 224, 255, 0.8);
 }
 
-@keyframes scaleIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+button {
+    background-color: #00e0ff;
+    color: #0a0a14;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px #00e0ff, 0 0 30px rgba(0, 224, 255, 0.5);
 }
 
-@keyframes scaleOut {
-    from { transform: scale(1); opacity: 1; }
-    to { transform: scale(0.9); opacity: 0; }
+button:hover {
+    background-color: #ff00e5;
+    color: #ffffff;
+    box-shadow: 0 0 15px #ff00e5, 0 0 35px #ff00e5;
+    transform: translateY(-3px);
+}
+
+button:disabled {
+    background-color: #555;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid #00e0ff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    animation: spin 0.7s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 16px;
+        max-width: 90%;
+    }
+
+    .event-card {
+        flex: 1 1 100%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        max-width: 90%;
+        padding: 16px;
+    }
 }

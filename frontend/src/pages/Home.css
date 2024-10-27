@@ -1,70 +1,37 @@
-
-.search-input {
-    padding: 12px;
-    margin-bottom: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 100%;
-    font-size: 16px;
-}
-
 .event-card {
-    /* opacity: 0;  */
-    animation: slideIn 0.7s;
-    animation-timing-function: ease-out;
-    transition: transform 0.5s ease, opacity 0.17s ease;
+    animation: futuristicSlideIn 1.2s ease-out;
+    transition: transform 0.4s ease, opacity 0.2s ease, background-color 0.3s;
+    background-color: #1e1e1e;
+    color: #e4e4e7;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(58, 134, 255, 0.8), 0px 0px 15px rgba(255, 255, 255, 0.2);
 }
 
 .event-card:hover {
-    transform: scale(1.05); 
-    opacity: 0.9; 
+    transform: scale(1.1) skew(-2deg);
+    opacity: 0.95;
+    background-color: #3b82f6;
+    box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.6), 0px 0px 20px rgba(58, 134, 255, 0.8);
 }
 
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-        opacity: 0; 
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1; 
-    }
-}
-
-.event-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-body {
-    /* background: linear-gradient(135deg, #f0f4f8, #a7c6ed); */
-    background-size: 200% 200%;
-    animation: gradientAnimation 20s ease infinite; 
-    background-image: url(../assets/backGroundImage.jpg);
-}
-@keyframes gradientAnimation {
+/* Futuristic Slide-in Animation */
+@keyframes futuristicSlideIn {
     0% {
-        background-position: 0% 50%;
+        transform: translateX(-80%) rotateY(40deg) scale(0.8);
+        opacity: 0;
+        filter: brightness(0.3);
     }
-    50% {
-        background-position: 100% 50%;
+    40% {
+        transform: translateX(10%) rotateY(-10deg) scale(1.05);
+        opacity: 0.7;
+        filter: brightness(1);
+    }
+    70% {
+        transform: translateX(-5%) rotateY(5deg) scale(1);
+        opacity: 0.9;
     }
     100% {
-        background-position: 0% 50%;
+        transform: translateX(0) rotateY(0deg) scale(1);
+        opacity: 1;
     }
-}
-.parallax {
-    /* background-image: url(../assets/backGroundImage.jpg); */
-    background: transparent;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-button {
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #3b82f6; 
 }
