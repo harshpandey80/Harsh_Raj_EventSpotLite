@@ -9,8 +9,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 const allowedOrigins = [
-  "https://deployment-1-99ih.onrender.com",
-  "https://deployment-rsku.onrender.com",
+  "https://harsh-raj-eventspotlite.onrender.com/",
   "http://localhost:3000", // Uncomment for local dev if needed
 ];
 
